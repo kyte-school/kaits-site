@@ -179,6 +179,8 @@ section.band { padding-block: 96px }
 
 footer { padding-block: 40px 56px; color: var(--ink-mute); font-size: 14px }
 footer .school b { color: var(--ink); font-weight: 700 }
+footer .legal { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line) }
+footer .legal-name { color: var(--ink); font-weight: 700 }
 footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center }
 </style>
 </head>
@@ -404,6 +406,9 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
     <span>School operations for Indian preschools and K-12 schools.</span>
     <span class="school">Running at <b>Dolphin Kids School</b></span>
   </div>
+  <div class="wrap legal">
+    <span>&copy; <span id="year">2026</span> <b class="legal-name">KAITS</b>. All rights reserved.</span>
+  </div>
 </footer>
 
 <script>
@@ -414,6 +419,7 @@ if (CONTACT.email) {
   document.getElementById('contact-text').textContent = CONTACT.email
   document.getElementById('contact-cta').hidden = false
 }
+try { document.getElementById('year').textContent = String(new Date().getFullYear()) } catch (e) {}
 var bar = document.getElementById('top')
 var onScroll = function () { bar.classList.toggle('scrolled', window.scrollY > 8) }
 window.addEventListener('scroll', onScroll, { passive: true }); onScroll()
