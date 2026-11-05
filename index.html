@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,800..900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: a stacked-card hero that echoes the layered KAITS mark, then plain bands for each audience, fees in depth, pickup, and trust. */
+/* Layout: a stacked-card hero of layered parent messages, then plain bands for each audience, fees in depth, pickup, and trust. */
 :root {
   --sky: #22b8f0; --violet: #7c5cff; --pink: #ff5c8a;
   --ink: #1b2230; --ink-soft: #4a5468; --ink-mute: #7a8396;
@@ -47,9 +47,9 @@ header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srg
 header.top.scrolled { border-bottom-color: var(--line) }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none }
-.brand img { width: 34px; height: 34px }
-.word { font-family: var(--display); font-stretch: 125%; font-weight: 900; font-size: 24px; letter-spacing: 0.01em }
-.word .ai { color: var(--violet) }
+.logo { display: block; width: auto; aspect-ratio: 579 / 162; fill: currentColor; fill-rule: evenodd; color: var(--ink) }
+.logo-lg { height: 30px }
+.logo-sm { height: 20px }
 .links { display: flex; gap: 26px; font-weight: 600; font-size: 15px }
 .links a { text-decoration: none; color: var(--ink-soft) }
 .links a:hover { color: var(--ink) }
@@ -171,7 +171,6 @@ section.band { padding-block: 96px }
 .demo { text-align: left }
 .demo-box { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: clamp(28px, 5vw, 56px); position: relative; overflow: hidden }
 .demo-box > * { min-width: 0; position: relative }
-.demo-box::after { content: ""; position: absolute; right: -60px; bottom: -60px; width: 260px; height: 260px; background: url(assets/kaits-mark.svg) no-repeat center / contain; opacity: 0.12 }
 .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; counter-reset: s }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; color: var(--ink-soft) }
 .steps li::before { content: counter(s); width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; background: var(--wash); color: var(--violet) }
@@ -187,10 +186,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="kaits-logo" viewBox="76 46 579 162"><path d="M76 56C76 52.134 79.134 49 83 49H125C128.866 49 132 52.134 132 56V94.1846C132 96.5154 135.981 97.1708 136.921 95.0377C149.624 66.1994 174.354 50.9095 209.993 49.1679C213.854 48.9792 217 52.134 217 56V101C217 104.866 213.866 108 210 108H172C170.895 108 170 108.895 170 110V110.386C170 111.328 170.667 112.141 171.583 112.359C205.905 120.513 223.397 149.055 224.895 197.985C225.013 201.849 221.866 205 218 205H176C172.134 205 169.015 201.859 168.895 197.995C167.799 162.583 157.964 144.008 134.007 143.04C132.903 142.995 132 143.895 132 145V198C132 201.866 128.866 205 125 205H83C79.134 205 76 201.866 76 198V56Z"/><path d="M285.691 62.1222C288.234 56.833 295.766 56.833 298.309 62.1222L362.176 194.967C364.411 199.614 361.024 205 355.868 205H319.699C316.857 205 314.297 203.281 313.221 200.65L307.779 187.35C306.703 184.719 304.143 183 301.301 183H282.699C279.857 183 277.297 184.719 276.221 187.35L270.779 200.65C269.703 203.281 267.143 205 264.301 205H228.132C222.976 205 219.589 199.614 221.824 194.967L285.691 62.1222ZM298.66 134.586C296.57 128.125 287.43 128.125 285.34 134.586L283.962 138.845C282.499 143.366 285.87 148 290.622 148H293.378C298.13 148 301.501 143.366 300.038 138.845L298.66 134.586Z"/><path d="M385 102C400.464 102 413 89.464 413 74C413 58.536 400.464 46 385 46C369.536 46 357 58.536 357 74C357 89.464 369.536 102 385 102Z"/><path d="M360 120C360 116.134 363.134 113 367 113H403C406.866 113 410 116.134 410 120V198C410 201.866 406.866 205 403 205H367C363.134 205 360 201.866 360 198V120Z"/><path d="M428.153 56.0014C427.978 52.1394 431.134 49 435 49H473C476.866 49 480 52.134 480 56V71C480 74.866 483.134 78 487 78H510C513.866 78 517 81.134 517 85V101C517 104.866 513.866 108 510 108H487C483.134 108 480 111.134 480 115V140C480 152 485 157 497 157C504.313 157 511.626 155.232 518.645 152.578C523.513 150.737 529 154.123 529 159.326V191.938C529 194.45 527.663 196.788 525.431 197.941C512.446 204.647 498.48 208 482 208C442 208 424 191 424 157V120C424 116.134 427.134 113 431 113H465.389C466.279 113 467 112.279 467 111.389C467 110.591 466.406 109.914 465.619 109.779C441.312 105.602 429.597 87.9342 428.153 56.0014Z"/><path d="M638 49C641.866 49 645 52.134 645 56V87C645 90.866 641.866 94 638 94H589C582 94 579 96 579 99C579 102 583 104 591 106L611 112C639 120 655 133 655 157C655 187 635 205 600 205H540C536.134 205 533 201.866 533 198V167C533 163.134 536.134 160 540 160H590C598 160 602 159 602 155C602 152 598 150 590 148L570 142C546 135 531 121 531 97C531 67 551 49 586 49H638Z"/></symbol></svg>
 
 <header class="top" id="top">
   <div class="wrap nav">
-    <a class="brand" href="#" aria-label="KAITS home"><img src="assets/kaits-mark.svg" alt=""><span class="word">K<span class="ai">AI</span>TS</span></a>
+    <a class="brand" href="#"><svg class="logo logo-lg" viewBox="0 0 579 162" role="img" aria-label="KAITS"><use href="#kaits-logo"/></svg></a>
     <nav class="links" aria-label="Sections">
       <a href="#people">Who it's for</a>
       <a href="#fees">Fees</a>
@@ -404,7 +404,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#" aria-label="KAITS home"><img src="assets/kaits-mark.svg" alt="" style="width:26px;height:26px"><span class="word" style="font-size:18px">K<span class="ai">AI</span>TS</span></a>
+    <a class="brand" href="#"><svg class="logo logo-sm" viewBox="0 0 579 162" role="img" aria-label="KAITS"><use href="#kaits-logo"/></svg></a>
     <span>School operations for Indian preschools and K-12 schools.</span>
     <span class="school">Running at <b>Dolphin Kids School</b></span>
   </div>
